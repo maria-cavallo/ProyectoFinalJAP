@@ -17,33 +17,33 @@
   </head>
 
   <body>
-    <main class="mt-5">
-      <div class="container">
-        <img src="img/login.png" alt="Logo" />
-        <h3> Iniciar Sesion </h3>
+    <main class="login-container">
+      <div class="login-box">
+        <img src="img/login.png" alt="Logo" class="login-logo" />
+        <h3 class="login-title">Iniciar sesión</h3>
         <form id="loginForm">
-          <div class="">
-            <label for="email" class="">Correo electrónico</label>
+          <div class="input-group">
             <input
-              type="email"
-              class="form-control"
+              type="text"
+              class="login-input"
               id="email"
               name="email"
+              placeholder="Usuario"
               required
             />
           </div>
-          <div class="">
-            <label for="password" class="">Contraseña</label>
+          <div class="input-group">
             <input
               type="password"
-              class="form-control"
+              class="login-input"
               id="password"
               name="password"
+              placeholder="Contraseña"
               required
             />
           </div>
-          <div class="">
-            <button type="submit" class="">Ingresar</button>
+          <div class="input-group">
+            <button type="submit" class="login-button">Ingresar</button>
           </div>
         </form>
       </div>
