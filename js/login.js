@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     if (document.cookie.split(';').some(cookie => cookie.trim().startsWith('user'))) {
-        window.location.href = "index.html";
+        if (!window.location.pathname.endsWith("index.html")) {
+            window.location.href = "index.html";
+        }
         return;
     }
 
