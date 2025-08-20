@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    if (document.cookie.split(';').some(cookie => cookie.trim().startsWith('user'))) {
+    if (document.cookie.split(';').some(cookie => cookie.trim().startsWith('user='))) {
         if (!window.location.pathname.endsWith("index.html")) {
             window.location.href = "index.html";
         }
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         acc => acc.email === email && acc.password === password
                     );
                     if (user) {
-                        document.cookie = `user${encodeURIComponent(email)}; path=/; max-age=${7 * 24 * 60 * 60}`;
+                        document.cookie = `user=${encodeURIComponent(email)}; path=/; max-age=${7 * 24 * 60 * 60}`;
                         window.location.href = "index.html";
                     } else {
                         alert("Usuario o contraseña incorrectos.");
