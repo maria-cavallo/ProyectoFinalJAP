@@ -7,11 +7,14 @@ function getCookie(name){
 document.addEventListener("DOMContentLoaded",()=>{
   const userCookie=getCookie('user');
   const currentPage=window.location.pathname.split('/').pop();
+  console.log("Cookie:", userCookie, "Página actual:", currentPage);
   if(!userCookie){
+    console.log("No hay cookie → redirigiendo a login");
     window.location.href='login.html';
     return;
   }
   if(userCookie && currentPage==="login.html"){
+    console.log("Ya hay cookie → redirigiendo a index");
     window.location.href='index.html';
     return;
   }
