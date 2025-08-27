@@ -279,6 +279,14 @@ a.custom-card:hover {
     padding: 0.65rem 0.9rem;
     font-size: 1rem;
   }
+  footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
 }
 
 /*Para celular*/
@@ -297,22 +305,6 @@ a.custom-card:hover {
     font-size: 0.9rem;  
     padding: 0.5rem 0.8rem;
   }
-}
-
-/*Texto y link*/ 
-
-@media (max-width: 768px) {
-  footer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  footer p {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-  }
-}
-
-@media (max-width: 480px) {
   footer {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -322,4 +314,6 @@ a.custom-card:hover {
     margin-bottom: 0.15rem;
   }
 }
+
+
 
