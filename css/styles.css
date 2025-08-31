@@ -70,7 +70,6 @@ nav a {
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  font-size: 1rem; 
 }
 
 footer p {
@@ -199,28 +198,23 @@ a.custom-card:hover {
 }
 
 .login-box {
-  max-width: 35rem;      
-  padding: 2rem;
-  margin: auto;
-
-}
-
-.login-box h3 {
-  text-align: center;
+  max-width: 22rem;  
+  width: 100%;
+  padding: 1rem;
+  h3{
+    text-align: center;
+  }
 }
 
 .login-logo {
-  width: 30rem;
-  height: auto;
-  display: block;
-  margin: 0 auto 2rem auto;
+  width: 20rem;       
+  margin-bottom: 1rem;
 }
 
 .login-title {
   font-weight: 600;
   margin-bottom: 1.25rem;
-  font-size: 1.5rem;
-  text-align: center;
+  font-size: 1.3rem;
 }
 
 .input-group {
@@ -229,12 +223,11 @@ a.custom-card:hover {
 
 .login-input {
   width: 100%;
-  padding: 0.8rem 1rem;  
+  padding: 0.6rem 0.8rem;  
   border: 0.07rem solid #ccc;
   border-radius: 0.6rem;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   box-shadow: 0 0.15rem 0.25rem rgba(0,0,0,0.1);
-  box-sizing: border-box;
 }
 
 .login-input:focus {
@@ -246,74 +239,88 @@ a.custom-card:hover {
   background-color: #f39c12;
   border: none;
   color: #fff;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,0.2);
   transition: all 0.2s ease;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
 }
 
 .login-button:hover {
   background-color: #e67e22;
 }
 
-
-/*Para tablet*/ 
-
-@media (max-width: 768px) {
-  .login-box {
-    padding: 1.5rem;  
+@media screen and (max-width: 1366px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); 
   }
-  .login-logo {
-    width: 20rem;      
+}
+
+@media screen and (max-width: 768px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    padding: 15px;
   }
-  .login-input {
-    padding: 0.65rem 0.8rem;
+}
+
+@media screen and (max-width: 320px) {
+  .product-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 20px;
+}
+
+/* Pantallas medianas */
+@media screen and (max-width: 1366px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets y pantallas pequeñas */
+@media screen and (max-width: 900px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px;
+  }
+}
+
+/* Móviles */
+@media screen and (max-width: 600px) {
+  .product-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+  .product-card {
     font-size: 0.95rem;
-  }
-  .login-button {
-    padding: 0.65rem 0.9rem;
-    font-size: 1rem;
-  }
-  footer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  footer p {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-  }
-}
-
-/*Para celular*/
-@media (max-width: 320px) {
-  .login-box {
-    padding: 1rem;      
-  }
-  .login-logo {
-    width: 12rem;      
-  }
-  .login-input {
-    padding: 0.5rem 0.7rem;
-    font-size: 0.9rem;
-  }
-  .login-button {
-    font-size: 0.9rem;  
-    padding: 0.5rem 0.8rem;
-  }
-  footer {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  footer p {
-    font-size: 0.8rem;
-    margin-bottom: 0.15rem;
+    padding: 8px;
   }
 }
 
 
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 16px;
+  transition: box-shadow 0.2s;
+}
 
+.product-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
