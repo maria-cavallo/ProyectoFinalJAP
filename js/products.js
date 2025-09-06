@@ -77,15 +77,25 @@ function filtrarProductos() {
     const min = Number(preciominimo.value) || 0;
     const max = Number(preciomaximo.value) || Infinity;
 
-    if (!productosGlobal || productosGlobal.length === 0) {
-        console.log("Aún no se cargaron los productos.");
-        return;
-    }
-
     const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
+    
+    productosFiltrados.sort((a, b) => a.cost - b.cost);
+   
     mostrarProductos(productosFiltrados);
 }
+botonlimpiar.addEventListener ("click", () => {
+    limpiarfiltro();
+})
+
+function limpiarfiltro() {
+    preciominimo.value = "";
+    preciomaximo.value = "";
+    mostrarProductos(productosGlobal);
+}
+
 });
+
+
 
 
 
