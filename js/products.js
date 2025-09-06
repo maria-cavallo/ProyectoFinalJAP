@@ -78,9 +78,7 @@ function filtrarProductos() {
     const max = Number(preciomaximo.value) || Infinity;
 
     const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
-    
-    productosFiltrados.sort((a, b) => a.cost - b.cost);
-   
+       
     mostrarProductos(productosFiltrados);
 }
 botonlimpiar.addEventListener ("click", () => {
