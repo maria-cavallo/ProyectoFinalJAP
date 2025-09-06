@@ -1,3 +1,5 @@
+let productosGlobal = []; //Variable para la lista 
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".products-list");
     const categoryTitle = document.querySelector(".category-selected");
@@ -51,18 +53,39 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             // Poner nombre de la categoría
             categoryTitle.textContent = data.catName || `Categoría ${catID}`;
+            productosGlobal = data.products; // <-- aquí guardamos los productos globalmente
             mostrarProductos(data.products);
         })
         .catch(error => {
             console.error("Error al cargar los productos:", error);
             container.innerHTML = `<div class="alert alert-danger">No se pudieron cargar los productos.</div>`;
         });
+
+    //Obtener los elementos del HTML
+let preciominimo= document.getElementById("precioMin");
+let preciomaximo= document.getElementById ("precioMax");
+const botonfiltrar= document.getElementById ("btnFiltrar"); 
+const botonlimpiar= document.getElementById ("btnLimpiar");
+
+//Funcionalidad botón
+botonfiltrar.addEventListener("click", () => {
+    filtrarProductos();
 });
 
-//Obtener los elementos del HTML
-let preciominimo= document.getElementById(precioMin);
-let preciomaximo= document.getElementById (precioMax);
-const botonfiltrar= document.getElementById (btnFiltrar); 
-const botonlimpiar= document.getElementById (btnLimpiar);
+//Función para filtrar por precio
+function filtrarProductos() {
+    const min = Number(preciominimo.value) || 0;
+    const max = Number(preciomaximo.value) || Infinity;
+
+    if (!productosGlobal || productosGlobal.length === 0) {
+        console.log("Aún no se cargaron los productos.");
+        return;
+    }
+
+    const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
+    mostrarProductos(productosFiltrados);
+}
+});
+
 
 
