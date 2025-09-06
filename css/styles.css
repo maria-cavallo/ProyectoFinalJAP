@@ -195,11 +195,11 @@ a.custom-card:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 .login-box {
-  max-width: 35rem;      
+  max-width: 25rem;      
   padding: 2rem;
   margin: auto;
 
@@ -210,7 +210,7 @@ a.custom-card:hover {
 }
 
 .login-logo {
-  width: 30rem;
+  width: 20rem;
   height: auto;
   display: block;
   margin: 0 auto 2rem auto;
