@@ -58,3 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
             container.innerHTML = `<div class="alert alert-danger">No se pudieron cargar los productos.</div>`;
         });
 });
+
+//Obtener los elementos del HTML
+let preciominimo= document.getElementById(precioMin);
+let preciomaximo= document.getElementById (precioMax);
+const botonfiltrar= document.getElementById (btnFiltrar); 
+const botonlimpiar= document.getElementById (btnLimpiar);
+
+
