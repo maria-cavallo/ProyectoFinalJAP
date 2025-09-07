@@ -194,14 +194,14 @@ a.custom-card:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 .login-box {
-  max-width: 22rem;
-  width: 100%;
+  max-width: 23rem;      
   padding: 1rem;
-
+  margin: auto;
+}
   h3 {
     text-align: center;
   }
@@ -209,6 +209,9 @@ a.custom-card:hover {
 
 .login-logo {
   width: 20rem;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem auto;
   margin-bottom: 1rem;
 }
 
@@ -314,6 +317,14 @@ a.custom-card:hover {
     }
   }
 
+
+.filtros {
+ text-align: right;
+}
+
+input {
+ width: 10%;
+}
 
   .product-card {
     background: #fff;
