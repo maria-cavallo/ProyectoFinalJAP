@@ -1,3 +1,27 @@
+function getCookie(name){
+  const value=`;${document.cookie}`
+  const parts = value.split(`;${name}=`);
+  console.log(parts);
+  if(parts.length===2) return decodeURIComponent(parts.pop().split(';').shift());
+  return null;
+}
+document.addEventListener("DOMContentLoaded",()=>{
+  const userCookie=getCookie('user');
+  const currentPage=window.location.pathname.split('/').pop();
+  console.log("Cookie:", userCookie, "Página actual:", currentPage);
+  if(!userCookie){
+    console.log("No hay cookie → redirigiendo a login");
+    window.location.href='login.html';
+    return;
+  }
+  if(userCookie && currentPage==="login.html"){
+    console.log("Ya hay cookie → redirigiendo a index");
+    window.location.href='index.html';
+    return;
+  }
+    const name_user_p =document.getElementById("name-user")
+    name_user_p.textContent="Hola, "+userCookie.valueOf('user');
+});
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
