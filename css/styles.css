@@ -198,7 +198,7 @@ a.custom-card:hover {
 }
 
 .login-box {
-  max-width: 23rem;      
+  max-width: 23rem;
   padding: 1rem;
   margin: auto;
 
@@ -287,6 +287,13 @@ a.custom-card:hover {
     padding: 20px;
   }
 
+  /* Carrusel */
+  #carouselExampleAutoplaying {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+
   /* Pantallas medianas */
   @media screen and (max-width: 1366px) {
     .product-list {
@@ -318,13 +325,13 @@ a.custom-card:hover {
   }
 
 
-.filtros {
- text-align: right;
-}
+  .filtros {
+    text-align: right;
+  }
 
-input {
- width: 10%;
-}
+  input {
+    width: 10%;
+  }
 
   .product-card {
     background: #fff;

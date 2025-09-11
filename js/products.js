@@ -13,87 +13,78 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // URL del JSON según categoría
     const PRODUCTS_URL = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-    // Mostrar productos en HTML
     function mostrarProductos(productos) {
-        let html = "";
         if (!productos || productos.length === 0) {
             container.innerHTML = `<div class="alert alert-warning">No se encontraron productos.</div>`;
             paragraph.textContent = "";
             return;
         }
 
-        productos.forEach(producto => {
-            html += `
-                <div class="card m-3 shadow-sm">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="${producto.image}" class="img-fluid rounded-start" alt="${producto.name}">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body d-flex flex-column h-100 justify-content-between">
-                                <h5 class="card-title">${producto.name} - <small class="text-muted">${producto.currency} ${producto.cost}</small></h5>
-                                <p class="card-text">${producto.description}</p>
-                                <p class="card-text"><small class="text-muted">Vendidos: ${producto.soldCount}</small></p>
-                            </div>
-                        </div>
-                    </div>
+    const html = productos.map(producto => `
+        <div class="card m-3 shadow-sm producto-item" data-id="${producto.id}" style="cursor:pointer;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="${producto.image}" class="img-fluid rounded-start" alt="${producto.name}">
                 </div>
-            `;
-        });
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column h-100 justify-content-between">
+                    <h5 class="card-title">${producto.name} - <small class="text-muted">${producto.currency} ${producto.cost}</small></h5>
+                    <p class="card-text">${producto.description}</p>
+                    <p class="card-text"><small class="text-muted">Vendidos: ${producto.soldCount}</small></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    `).join("");
 
         container.innerHTML = html;
     }
 
-    // Traer datos desde JSON
     fetch(PRODUCTS_URL)
         .then(response => response.json())
         .then(data => {
-            // Poner nombre de la categoría
             categoryTitle.textContent = data.catName || `Categoría ${catID}`;
-            productosGlobal = data.products; // <-- aquí guardamos los productos globalmente
-            mostrarProductos(data.products);
+            productosGlobal = data.products; // guardamos original para filtros
+            mostrarProductos(productosGlobal);
         })
         .catch(error => {
             console.error("Error al cargar los productos:", error);
             container.innerHTML = `<div class="alert alert-danger">No se pudieron cargar los productos.</div>`;
         });
 
-    //Obtener los elementos del HTML
-let preciominimo= document.getElementById("precioMin");
-let preciomaximo= document.getElementById ("precioMax");
-const botonfiltrar= document.getElementById ("btnFiltrar"); 
-const botonlimpiar= document.getElementById ("btnLimpiar");
+    // Delegación de evento para clic en card (funciona aunque cambies innerHTML)
+    container.addEventListener("click", (e) => {
+        const card = e.target.closest(".producto-item");
+        if (!card) return;
+        const productID = card.dataset.id;
+        console.log("Producto clickeado:", productID);
+        if (!productID) {
+            console.warn("El producto no tiene id");
+            return;
+        }
+        localStorage.setItem("productID", productID);
+        // <- Ajustá el nombre del HTML si tu archivo se llama products-info.html
+        window.location.href = "product-info.html";
+    });
 
-//Funcionalidad botón
-botonfiltrar.addEventListener("click", () => {
-    filtrarProductos();
+    // FILTROS
+    const preciominimo = document.getElementById("precioMin");
+    const preciomaximo = document.getElementById("precioMax");
+    const botonfiltrar = document.getElementById("btnFiltrar");
+    const botonlimpiar = document.getElementById("btnLimpiar");
+
+    botonfiltrar.addEventListener("click", () => {
+        const min = Number(preciominimo.value) || 0;
+        const max = Number(preciomaximo.value) || Infinity;
+        const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
+        mostrarProductos(productosFiltrados);
+    });
+
+    botonlimpiar.addEventListener("click", () => {
+        preciominimo.value = "";
+        preciomaximo.value = "";
+        mostrarProductos(productosGlobal);
+    });
 });
-
-//Función para filtrar por precio
-function filtrarProductos() {
-    const min = Number(preciominimo.value) || 0;
-    const max = Number(preciomaximo.value) || Infinity;
-
-    const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
-       
-    mostrarProductos(productosFiltrados);
-}
-botonlimpiar.addEventListener ("click", () => {
-    limpiarfiltro();
-})
-
-function limpiarfiltro() {
-    preciominimo.value = "";
-    preciomaximo.value = "";
-    mostrarProductos(productosGlobal);
-}
-
-});
-
-
-
-
-
