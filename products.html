@@ -10,6 +10,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
 </head>
 
 <body>
@@ -44,6 +46,18 @@
         <p class="paragraph">Verás aquí todos los productos de la categoría seleccionada.</p>
       </div>
       <div class="filtros">
+        <div class="Orden"> 
+        <button class="btn btn-secondary" id="sortAsc">
+          <i class="bi bi-sort-up"></i>$
+        </button>
+        <button class="btn btn-secondary" id="sortDesc">
+          <i class="bi bi-sort-down"></i>$
+        </button>
+        <button class="btn btn-dark" id="sortRel">
+          <i class="bi bi-sort-down"></i> Rel.
+        </button>
+        </div>
+        <br>
         <label for="precioMin">Precio mínimo:</label>
         <input type="number" id="precioMin" placeholder="0">
         <label for="precioMax">Precio máximo:</label>
