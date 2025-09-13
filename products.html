@@ -45,8 +45,8 @@
         <h2 class="category-selected"></h2>
         <p class="paragraph">Verás aquí todos los productos de la categoría seleccionada.</p>
       </div>
-      <div class="filtros">
-        <div class="Orden"> 
+      <div class= "contenedorfiltros">
+        <div class="d-flex justify-content-end mb-2  gap-2 flex-wrap"> 
         <button class="btn btn-secondary" id="sortAsc">
           <i class="bi bi-sort-up"></i>$
         </button>
@@ -58,12 +58,14 @@
         </button>
         </div>
         <br>
+        <div class="d-flex justify-content-end flex-wrap gap-2">
         <label for="precioMin">Precio mínimo:</label>
         <input type="number" id="precioMin" placeholder="0">
         <label for="precioMax">Precio máximo:</label>
         <input type="number" id="precioMax" placeholder="0">
         <button class="btn btn-warning" id="btnFiltrar">Filtrar</button>
         <button class="btn btn-light" id="btnLimpiar">Limpiar</button>
+        </div>
       </div>
       <div class="products-list">
       </div>

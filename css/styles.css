@@ -324,15 +324,6 @@ a.custom-card:hover {
     }
   }
 
-
-  .filtros {
-    text-align: right;
-  }
-
-  input {
-    width: 10%;
-  }
-
   .product-card {
     background: #fff;
     border-radius: 10px;
