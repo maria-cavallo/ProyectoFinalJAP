@@ -1,5 +1,7 @@
 let productosGlobal = []; //Variable para la lista 
 
+let productosFiltrados = []; //Lista activa 
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".products-list");
     const categoryTitle = document.querySelector(".category-selected");
@@ -78,13 +80,41 @@ document.addEventListener("DOMContentLoaded", () => {
     botonfiltrar.addEventListener("click", () => {
         const min = Number(preciominimo.value) || 0;
         const max = Number(preciomaximo.value) || Infinity;
-        const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
+        productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
         mostrarProductos(productosFiltrados);
     });
 
     botonlimpiar.addEventListener("click", () => {
         preciominimo.value = "";
         preciomaximo.value = "";
+        productosFiltrados = []; 
         mostrarProductos(productosGlobal);
     });
+
+    //Obtener los elementos del HTML para botones de orden 
+    const botonascedente= document.getElementById ("sortAsc");
+    const botondescendente= document.getElementById ("sortDesc");
+    const botonrelevancia= document.getElementById ("sortRel");
+
+//Evento de hacer clic aplicar el método sort para ordener de menor a mayor precio 
+  botonascedente.addEventListener ("click", () => {
+  let lista = productosFiltrados.length > 0 ? productosFiltrados : productosGlobal;
+  lista.sort((a, b) => a.cost - b.cost);
+  mostrarProductos(lista);
+  })
+
+//Evento de hacer clic aplicar el método sort para ordener de mayor a menor precio 
+  botondescendente.addEventListener ("click", () => {
+  let lista = productosFiltrados.length > 0 ? productosFiltrados : productosGlobal;
+  lista.sort ((a,b) => b.cost - a.cost);
+  mostrarProductos(lista);
+  })
+
+//Evento de hacer clic para filtrar por cantidad de vendidos
+  botonrelevancia.addEventListener ("click", () => {
+  let lista = productosFiltrados.length > 0 ? productosFiltrados : productosGlobal;
+  lista.sort ((a,b) => b.soldCount - a.soldCount); //se saca de la API de las propiedades del objeto
+  mostrarProductos(lista);
+  })
+
 });
