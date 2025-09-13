@@ -80,13 +80,14 @@ document.addEventListener("DOMContentLoaded", () => {
     botonfiltrar.addEventListener("click", () => {
         const min = Number(preciominimo.value) || 0;
         const max = Number(preciomaximo.value) || Infinity;
-        const productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
+        productosFiltrados = productosGlobal.filter(producto => producto.cost >= min && producto.cost <= max);
         mostrarProductos(productosFiltrados);
     });
 
     botonlimpiar.addEventListener("click", () => {
         preciominimo.value = "";
         preciomaximo.value = "";
+        productosFiltrados = []; 
         mostrarProductos(productosGlobal);
     });
 
