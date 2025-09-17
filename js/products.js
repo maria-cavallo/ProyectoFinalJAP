@@ -117,4 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarProductos(lista);
   })
 
+  const buscador = document.getElementById("buscador");
+  buscador.addEventListener("input",()=>{
+    const text=buscador.value.toLowerCase();
+
+    if(text.trim()===""){
+        mostrarProductos(productosGlobal);
+        return;
+    }
+    const lista=productosFiltrados.length>0?productosFiltrados:productosGlobal;
+    const resultados=lista.filter(producto=>producto.name.toLowerCase().includes(text) || producto.description.toLowerCase().includes(text));
+    mostrarProductos(resultados);
+
+
+  });
+
+
 });
