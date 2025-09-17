@@ -78,6 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             `;
+        const relatedContainer = document.getElementById('productos-relacionados');
+
+           if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
+           product.relatedProducts.forEach(rel => {
+           const div = document.createElement('div');
+           div.classList.add('related-card');
+           div.innerHTML = `
+            <img src="${rel.image}" width="150">
+            <h6>${rel.name}</h6>
+            <button onclick="verProducto(${rel.id})">Ver producto</button>
+        `;
+        relatedContainer.appendChild(div);
+    });
+}
         })
         .catch(err => {
             console.error("Error al cargar producto:", err);
@@ -86,4 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 No se pudo cargar la información del producto.
             </div>`;
         });
+
 });
