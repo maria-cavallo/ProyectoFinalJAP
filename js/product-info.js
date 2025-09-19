@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(product => {
+            // --- Producto principal ---
             const imgs = Array.isArray(product.images) ? product.images : [];
             let imagesHtml = "";
 
@@ -29,8 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             ${imgs.map((src, i) => `
                             <div class="carousel-item ${i === 0 ? 'active' : ''}">
                                 <img src="${src}" class="d-block w-100 rounded img-fluid" alt="${product.name}">
-                            </div>
-                            `).join("")}
+                            </div>`).join("")}
                         </div>
                         ${imgs.length > 1 ? `
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -41,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Siguiente</span>
                             </button>` : ""}
-                    </div>
-                `;
+                    </div>`;
             } else {
                 imagesHtml = `
                     <div class="alert alert-secondary text-center my-4">
@@ -76,22 +75,29 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
-        const relatedContainer = document.getElementById('productos-relacionados');
+                </div>`;
 
-           if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
-           product.relatedProducts.forEach(rel => {
-           const div = document.createElement('div');
-           div.classList.add('related-card');
-           div.innerHTML = `
-            <img src="${rel.image}" width="150">
-            <h6>${rel.name}</h6>
-            <button onclick="verProducto(${rel.id})">Ver producto</button>
-        `;
-        relatedContainer.appendChild(div);
-    });
-}
+            // Tomar el div de productos relacionados 
+            const relatedContainer = document.getElementById('productos-relacionados');
+
+            if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
+                relatedContainer.innerHTML = ""; // vaciar el contenedor
+                product.relatedProducts.forEach(rel => {
+                    const col = document.createElement('div'); //crear las columnas con los objetos
+                    col.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
+                    col.innerHTML = `
+                        <div class="card shadow-sm h-100 text-center">
+                            <img src="${rel.image}" class="card-img-top img-fluid" alt="${rel.name}">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold mb-3">${rel.name}</h6>
+                                <button class="btn btn-outline-primary mt-auto" onclick="verProducto(${rel.id})">
+                                    Ver producto
+                                </button>
+                            </div>
+                        </div>`;
+                    relatedContainer.appendChild(col); //agregar elementos dentro del contendor 
+                });
+            }
         })
         .catch(err => {
             console.error("Error al cargar producto:", err);
@@ -100,5 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 No se pudo cargar la información del producto.
             </div>`;
         });
-
 });
+
+// Funcionalidad para ver el producto al redirigir 
+function verProducto(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html";
+}
