@@ -45,6 +45,30 @@
     <h4>Productos relacionados</h4>
        <div id="productos-relacionados" class="row g-4"></div>
     </div>
+    
+    <div class="container my-4">
+  <h4>Opiniones</h4>
+  <div id="comentarios"></div>
+  
+  <form id="comentario-form" class="mt-3">
+    <div class="mb-2">
+      <label for="comentario-texto" class="form-label">Tu opinión</label>
+      <textarea id="comentario-texto" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="mb-2">
+      <label for="comentario-score" class="form-label">Puntuación</label>
+      <select id="comentario-score" class="form-select" required>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆</option>
+        <option value="3">★★★☆☆</option>
+        <option value="2">★★☆☆☆</option>
+        <option value="1">★☆☆☆☆</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
+</div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
