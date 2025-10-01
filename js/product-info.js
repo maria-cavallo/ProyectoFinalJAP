@@ -98,6 +98,39 @@ document.addEventListener("DOMContentLoaded", () => {
                     relatedContainer.appendChild(col); //agregar elementos dentro del contendor 
                 });
             }
+            const comentariosIniciales = [];
+            const commentsContainer = document.getElementById("comentarios");
+            const form = document.getElementById("comentario-form");
+
+
+            function agregarComentario(user, description, score) {
+                const div = document.createElement("div");
+                div.classList.add("card", "my-2", "shadow-sm");
+                div.innerHTML = `
+                    <div class="card-body">
+                    <h6 class="fw-bold mb-1">${user}</h6>
+                    <p class="mb-1 text-warning">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>
+                    <p class="mb-0">${description}</p>
+                    </div>
+                `;
+                commentsContainer.appendChild(div);
+            }
+
+
+            comentariosIniciales.forEach(c => agregarComentario(c.user, c.description, c.score));
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const user = "Usuario";
+                const description = document.getElementById("comentario-texto").value;
+                const score = parseInt(document.getElementById("comentario-score").value);
+
+                if (!description.trim()) return;
+
+                agregarComentario(user, description, score);
+                form.reset();
+            });
+
         })
         .catch(err => {
             console.error("Error al cargar producto:", err);
