@@ -19,10 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(product => {
-            // --- Producto principal ---
             const imgs = Array.isArray(product.images) ? product.images : [];
             let imagesHtml = "";
-
             if (imgs.length > 0) {
                 imagesHtml = `
                     <div id="carouselExampleAutoplaying" class="carousel slide mb-4 w-100 shadow-sm rounded" data-bs-ride="carousel">
@@ -77,13 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>`;
 
-            // Tomar el div de productos relacionados 
+            /* PRODUCTOS RELACIONADOS */
             const relatedContainer = document.getElementById('productos-relacionados');
 
             if (Array.isArray(product.relatedProducts) && product.relatedProducts.length > 0) {
-                relatedContainer.innerHTML = ""; // vaciar el contenedor
+                relatedContainer.innerHTML = "";
                 product.relatedProducts.forEach(rel => {
-                    const col = document.createElement('div'); //crear las columnas con los objetos
+                    const col = document.createElement('div');
                     col.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
                     col.innerHTML = `
                         <div class="card shadow-sm h-100 text-center">
@@ -95,43 +93,40 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </button>
                             </div>
                         </div>`;
-                    relatedContainer.appendChild(col); //agregar elementos dentro del contendor 
+                    relatedContainer.appendChild(col);
                 });
             }
+
+            /* COMENTARIOS */
             const comentariosIniciales = [];
             const commentsContainer = document.getElementById("comentarios");
             const form = document.getElementById("comentario-form");
-
-
             function agregarComentario(user, description, score) {
                 const div = document.createElement("div");
+                const fecha = new Date().toLocaleString();
                 div.classList.add("card", "my-2", "shadow-sm");
                 div.innerHTML = `
                     <div class="card-body">
-                    <h6 class="fw-bold mb-1">${user}</h6>
-                    <p class="mb-1 text-warning">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>
-                    <p class="mb-0">${description}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="fw-bold mb-1">${user}</h6>
+                            <p class="mb-1 text-warning fs-4">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>
+                        </div>    
+                        <p class="mb-2">${description}</p>
+                        <small class="text-muted fs-8">${fecha}</small>
                     </div>
                 `;
                 commentsContainer.appendChild(div);
             }
 
-
             comentariosIniciales.forEach(c => agregarComentario(c.user, c.description, c.score));
-
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
-                const user = "Usuario";
-
-                // Nuevo campo de opinión (input de texto)
+                const user = getCookie('user');
                 const description = document.getElementById("comentario").value;
-
-                // Nuevo sistema de estrellas (radio buttons)
                 const ratingInput = document.querySelector('input[name="rating"]:checked');
                 const score = ratingInput ? parseInt(ratingInput.value) : 0;
 
                 if (!description.trim() || score === 0) return;
-
                 agregarComentario(user, description, score);
                 form.reset();
             });
@@ -145,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 });
 
-// Funcionalidad para ver el producto al redirigir 
 function verProducto(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html";

@@ -41,45 +41,39 @@
     <div class="container my-4 navbar-nav w-100 justify-content-between">
       <div id="product-info" class="card shadow-sm p-4"></div>
     </div>
-    <div class="container my-4 font-weight-bold">
-    <h4>Productos relacionados</h4>
-       <div id="productos-relacionados" class="row g-4"></div>
-    </div>
-    
     <div class="container my-4">
-  <h4>Opiniones</h4>
-  <div id="comentarios"></div>
-  
-  
-  <div class="opinion-container">
-    <form id="comentario-form">
-      <h3 id="Subtitulo-Comentarios">Enviar una opinión</h3>
-      <!-- Rating de estrellas -->
-      <div class="star-rating">
-        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
-        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+      <h4>Opiniones</h4>
+      <div id="comentarios"></div>
+
+      <div class="opinion-container">
+        <label for="comentario-texto" class="form-label mt-4">Enviar una opinión</label>
+        <form id="comentario-form">
+          <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+          </div>
+          <div class="opinion-input">
+            <input type="text" id="comentario" placeholder="Ingrese su opinión sobre el producto" required>
+            <button type="submit" class="btn btn-primary px-3 shadow-sm m-8">➤</button>
+          </div>
+        </form>
       </div>
-
-      <!-- Caja de texto con botón al costado -->
-      <div class="opinion-input">
-        <input type="text" id="comentario" placeholder="Ingrese su opinión sobre el producto" required>
-        <button type="submit" class="btn-enviar">➤</button>
+      <div class="container my-4 font-weight-bold">
+        <h4>Productos relacionados</h4>
+        <div id="productos-relacionados" class="row g-4"></div>
       </div>
-    </form>
-  </div>
-
-
-
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">

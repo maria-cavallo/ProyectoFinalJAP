@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     return;
   }
     const name_user_p =document.getElementById("name-user")
-    name_user_p.textContent="Hola, "+userCookie.valueOf('user');
+    name_user_p.textContent="Hola, "+userCookie;
 });
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
