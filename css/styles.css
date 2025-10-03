@@ -336,3 +336,82 @@ a.custom-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
   }
 }
+
+#comentario-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+#Subtitulo-Comentarios {
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+.opinion-container {
+  width: 80vw;              
+  max-width: 90vw;          
+  margin: 0.2vh auto;         
+  font-family: Arial, sans-serif;
+  text-align: left; 
+}
+
+.star-rating {
+  display: flex;
+  justify-content: left; 
+  direction: rtl;
+  font-size: 4vmin;        
+  margin-bottom: 0.2vh;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: gold;
+}
+
+.opinion-input {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  border: 0.2vmin solid #ccc;
+  border-radius: 1vmin;
+  overflow: hidden;
+  width: 70vw;             
+  max-width: 80vw;
+  margin: 0; 
+}
+
+.opinion-input input {
+  flex: 1;
+  border: none;
+  padding: 1.5vh 2vw;
+  outline: none;
+  font-size: 2vmin;
+}
+
+.opinion-input .btn-enviar {
+  background: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 1.5vh 2vw;
+  font-size: 2.5vmin;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.opinion-input .btn-enviar:hover {
+  background: #0056b3;
+}

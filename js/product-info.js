@@ -122,15 +122,19 @@ document.addEventListener("DOMContentLoaded", () => {
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
                 const user = "Usuario";
-                const description = document.getElementById("comentario-texto").value;
-                const score = parseInt(document.getElementById("comentario-score").value);
 
-                if (!description.trim()) return;
+                // Nuevo campo de opinión (input de texto)
+                const description = document.getElementById("comentario").value;
+
+                // Nuevo sistema de estrellas (radio buttons)
+                const ratingInput = document.querySelector('input[name="rating"]:checked');
+                const score = ratingInput ? parseInt(ratingInput.value) : 0;
+
+                if (!description.trim() || score === 0) return;
 
                 agregarComentario(user, description, score);
                 form.reset();
             });
-
         })
         .catch(err => {
             console.error("Error al cargar producto:", err);
