@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="icon" type="image/png" href="img/logo-jap.svg">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <p id="name-user" class="nav-link"></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="container my-4 navbar-nav w-100 justify-content-between">
+      <div id="product-info" class="card shadow-sm p-4"></div>
+    </div>
+    <div class="container my-4">
+      <!-- SECCIÓN DE CALIFICACIONES RESUMEN -->
+      <div id="ratings-summary" class="card shadow-sm p-4 mb-4">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+            <div class="display-3 fw-bold text-warning" id="average-rating">4.7</div>
+            <div>
+              <span id="total-reviews" class="fw-bold">86</span> opiniones
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="my-1">
+              <span class="me-2">5 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" id="bar-5"></div>
+              </div>
+              <span id="count-5" class="ms-1">52</span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">4 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" id="bar-4"></div>
+              </div>
+              <span id="count-4" class="ms-1">18</span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">3 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 7%" id="bar-3"></div>
+              </div>
+              <span id="count-3" class="ms-1">10</span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">2 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 2%" id="bar-2"></div>
+              </div>
+              <span id="count-2" class="ms-1">4</span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">1 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" id="bar-1"></div>
+              </div>
+              <span id="count-1" class="ms-1">2</span>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 text-center">
+            <button class="btn btn-outline-primary fw-bold px-3" onclick="document.getElementById('comentario').focus();">
+              Dejar opinión
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h4>Opiniones</h4>
+      <div id="comentarios"></div>
+
+      <div class="opinion-container">
+        <label for="comentario-texto" class="form-label mt-4">Enviar una opinión</label>
+        <form id="comentario-form">
+          <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+          </div>
+          <div class="opinion-input">
+            <input type="text" id="comentario" placeholder="Ingrese su opinión sobre el producto" required>
+            <button type="submit" class="btn btn-primary px-3 shadow-sm m-8">➤</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container my-4 font-weight-bold">
+        <h4>Productos relacionados</h4>
+        <div id="productos-relacionados" class="row g-4"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
+
+</html>
