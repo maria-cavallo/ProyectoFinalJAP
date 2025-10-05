@@ -47,57 +47,59 @@
           <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
             <div class="display-3 fw-bold text-warning" id="average-rating">4.7</div>
             <div>
-              <span id="total-reviews" class="fw-bold">86</span> opiniones
+              <span id="total-reviews" class="fw-bold"></span> opiniones
             </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="my-1">
               <span class="me-2">5 ★</span>
               <div class="progress d-inline-block align-middle" style="width:70%">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" id="bar-5"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-5"></div>
               </div>
-              <span id="count-5" class="ms-1">52</span>
+              <span id="count-5" class="ms-1"></span>
             </div>
             <div class="my-1">
               <span class="me-2">4 ★</span>
               <div class="progress d-inline-block align-middle" style="width:70%">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" id="bar-4"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-4"></div>
               </div>
-              <span id="count-4" class="ms-1">18</span>
+              <span id="count-4" class="ms-1"></span>
             </div>
             <div class="my-1">
               <span class="me-2">3 ★</span>
               <div class="progress d-inline-block align-middle" style="width:70%">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 7%" id="bar-3"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-3"></div>
               </div>
-              <span id="count-3" class="ms-1">10</span>
+              <span id="count-3" class="ms-1"></span>
             </div>
             <div class="my-1">
               <span class="me-2">2 ★</span>
               <div class="progress d-inline-block align-middle" style="width:70%">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 2%" id="bar-2"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-2"></div>
               </div>
-              <span id="count-2" class="ms-1">4</span>
+              <span id="count-2" class="ms-1"></span>
             </div>
             <div class="my-1">
               <span class="me-2">1 ★</span>
               <div class="progress d-inline-block align-middle" style="width:70%">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" id="bar-1"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-1"></div>
               </div>
-              <span id="count-1" class="ms-1">2</span>
+              <span id="count-1" class="ms-1"></span>
             </div>
           </div>
           <div class="col-12 col-md-3 text-center">
-            <button class="btn btn-outline-primary fw-bold px-3" onclick="document.getElementById('comentario').focus();">
-              Dejar opinión
-            </button>
+            <div class="d-flex flex-column">
+              <h6 class="px-3">
+                ¡Dejá tu opinión en la sección de abajo!
+              </h6>
+              <h6>🠟</h6>
+            </div>
           </div>
         </div>
       </div>
 
       <h4>Opiniones</h4>
       <div id="comentarios"></div>
-
       <div class="opinion-container">
         <label for="comentario-texto" class="form-label mt-4">Enviar una opinión</label>
         <form id="comentario-form">
