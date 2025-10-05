@@ -144,3 +144,23 @@ function verProducto(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html";
 }
+
+function actualizarResumenCalificaciones(comentarios) {
+  const counts = [0, 0, 0, 0, 0]; // [1,2,3,4,5]
+  comentarios.forEach(c => {
+    counts[c.score - 1]++;
+  });
+
+  const totalReviews = comentarios.length || 1;
+  const average = comentarios.reduce((sum,c)=>sum+c.score,0) / totalReviews;
+
+  document.getElementById('average-rating').textContent = average.toFixed(1);
+  document.getElementById('total-reviews').textContent = totalReviews;
+  counts.forEach((cant, idx)=>{
+    const bar = document.getElementById('bar-' + (5-idx));
+    const countLabel = document.getElementById('count-' + (5-idx));
+    const percent = totalReviews === 0 ? 0 : (cant/totalReviews)*100;
+    bar.style.width = percent + '%';
+    countLabel.textContent = cant;
+  });
+}
