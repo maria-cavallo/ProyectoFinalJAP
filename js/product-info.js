@@ -43,7 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
             container.innerHTML = `
                 <div class="container py-4">
                     <div class="d-flex align-items-center mb-4">
-                        <button class="btn btn-outline-secondary me-3" onclick="window.history.back()">&lt; Volver</button>
+                        <button class="btn btn-outline-secondary me-3 d-flex align-items-center gap-1" onclick="window.history.back()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                            </svg> Volver
+                        </button>
                         <h2 class="mb-0 fw-bold text-center flex-grow-1">${product.name}</h2>
                     </div>
                     <div class="row justify-content-center align-items-start g-4">

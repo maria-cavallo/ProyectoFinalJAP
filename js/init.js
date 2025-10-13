@@ -21,6 +21,13 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
     const name_user_p =document.getElementById("name-user")
     name_user_p.textContent="Hola, "+userCookie;
+
+    const userImg = document.querySelector('nav img[alt="user-image"]');
+
+    const savedPic = sessionStorage.getItem("profilePic");
+      if (savedPic && userImg) {
+        userImg.src = savedPic;
+    }
 });
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";

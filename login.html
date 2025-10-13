@@ -24,14 +24,17 @@
       <form id="loginForm">
         <div class="input-group">
           <input type="text" class="login-input" id="email" name="email" placeholder="Usuario" required />
+          <div class="invalid-feedback"></div>
         </div>
         <div class="input-group">
           <input type="password" class="login-input" id="password" name="password" placeholder="Contraseña" required />
+          <div class="invalid-feedback"></div>
         </div>
         <div class="input-group">
           <button type="submit" class="login-button">Ingresar</button>
         </div>
       </form>
+      <div id="alert-container" class="mt-3"></div>
     </div>
   </main>
   <footer class="text-muted">
