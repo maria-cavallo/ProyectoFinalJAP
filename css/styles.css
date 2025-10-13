@@ -9,6 +9,12 @@
   font-weight: bold;
 }
 
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 nav a {
   text-decoration: none;
 }
