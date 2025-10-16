@@ -12,11 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const user = localStorage.getItem("user") || decodeURIComponent(getCookie("user") || "");
     if (user) email.value = user;
-
+    /*
     if (sessionStorage.getItem("profilePic")) {
         const savedPic = sessionStorage.getItem("profilePic");
         profilePic.src = savedPic;
     }
+    */
+   const savedPic=localStorage.getItem("profilePic")
+   if(savedPic){
+        profilePic.src=savedPic;
+   }
 
     const savedProfile = JSON.parse(localStorage.getItem("profileData"));
     if (savedProfile) {
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             reader.onload = function (event) {
                 const imgData = event.target.result;
                 profilePic.src = imgData;
-                sessionStorage.setItem("profilePic", imgData);
+                localStorage.setItem("profilePic", imgData);
                 showAlert("Foto de perfil actualizada.", "success");
             };
             reader.readAsDataURL(file);
@@ -44,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     removeBtn.addEventListener("click", () => {
         profilePic.src = "img/img_perfil.png";
         uploadInput.value = "";
-        sessionStorage.removeItem("profilePic");
+        localStorage.removeItem("profilePic");
         showAlert("Foto de perfil eliminada.", "info");
     });
 
