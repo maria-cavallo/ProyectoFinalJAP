@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     const name_user_p =document.getElementById("name-user")
     name_user_p.textContent="Hola, "+userCookie;
 
-    const userImg = document.querySelector('nav img[alt="user-image"]');
+    const userImg = document.querySelector('nav img[id="user-image"]');
 
-    const savedPic = sessionStorage.getItem("profilePic");
+    const savedPic = localStorage.getItem("profilePic");
       if (savedPic && userImg) {
         userImg.src = savedPic;
     }
