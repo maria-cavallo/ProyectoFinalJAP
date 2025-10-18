@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const col = document.createElement("div");
                     col.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
                     col.innerHTML = `
-                        <div class="card shadow-sm h-100 text-center">
+                        <div class="dark-bg card shadow-sm h-100 text-center">
                             <img src="${rel.image}" class="card-img-top img-fluid" alt="${rel.name}">
                             <div class="card-body d-flex flex-column">
                                 <h6 class="card-title fw-bold mb-3">${rel.name}</h6>
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const div = document.createElement("div");
                 div.classList.add("card", "my-2", "shadow-sm");
                 div.innerHTML = `
-                <div class="card-body">
+                <div class="dark-bg card-body">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                     <h6 class="fw-bold mb-1">${user}</h6>
                     <p class="mb-1 text-warning fs-4">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>

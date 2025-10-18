@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="${producto.image}" class="img-fluid rounded-start" alt="${producto.name}">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body d-flex flex-column h-100 justify-content-between">
+                    <div class="dark-bg card-body d-flex flex-column h-100 justify-content-between">
                     <h5 class="card-title">${producto.name} - <small class="text-muted">${producto.currency} ${producto.cost}</small></h5>
                     <p class="card-text">${producto.description}</p>
                     <p class="card-text"><small class="text-muted">Vendidos: ${producto.soldCount}</small></p>

@@ -46,6 +46,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="theme-toggle" href="">Modo oscuro/claro</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
@@ -84,7 +87,7 @@
       </svg>
     </button>
     <h2 class="mb-4 text-center">Mi perfil</h2>
-    <div class="container border rounded-3 shadow-sm">
+    <div class="border rounded-3 shadow-sm">
       <div class="profile-container">
         <div class="profile-left">
           <img id="profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle border bg-white" width="200" height="200">
@@ -109,7 +112,7 @@
           <div class="mb-3">
             <label for="firstName" class="form-label">Nombre</label>
             <div class="d-flex align-items-center gap-2">
-              <input type="text" id="firstName" class="form-control" maxlength="15" placeholder="Ingrese su nombre">
+              <input type="text" id="firstName" class="button-multi form-control" maxlength="15" placeholder="Ingrese su nombre">
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
               </svg>
@@ -120,7 +123,7 @@
           <div class="mb-3">
             <label for="lastName" class="form-label">Apellido</label>
             <div class="d-flex align-items-center gap-2">
-              <input type="text" id="lastName" class="form-control" maxlength="15" placeholder="Ingrese su apellido">
+              <input type="text" id="lastName" class="button-multi form-control" maxlength="15" placeholder="Ingrese su apellido">
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23 " fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
               </svg>
@@ -130,14 +133,14 @@
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" maxlength="30" readonly>
+            <input type="email" id="email" class="button-multi form-control" maxlength="30" disabled>
             <div class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3">
             <label for="phone" class="form-label">Teléfono de contacto</label>
             <div class="d-flex align-items-center gap-2">
-              <input type="tel" id="phone" class="form-control" pattern="[0-9]*" inputmode="numeric" maxlength="15" placeholder="Ingrese su teléfono">
+              <input type="tel" id="phone" class="button-multi form-control" pattern="[0-9]*" inputmode="numeric" maxlength="15" placeholder="Ingrese su teléfono">
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
               </svg>
@@ -163,6 +166,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/darktheme.js"></script>
+
 </body>
 
 </html>

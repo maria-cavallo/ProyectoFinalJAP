@@ -30,6 +30,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="theme-toggle" href="">Modo oscuro/claro</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
@@ -63,11 +66,11 @@
   </nav>
   <main>
     <div class="jumbotron text-center"></div>
-    <div class="album py-5 bg-light">
+    <div class="album py-5 ">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
+            <div class="dark-bg card mb-4 shadow-sm custom-card cursor-active" id="autos">
               <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
                 alt="Imgagen representativa de la categoría 'Autos'">
               <h3 class="m-3">Autos</h3>
@@ -77,7 +80,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
+            <div class="dark-bg card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
               <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
                 alt="Imgagen representativa de la categoría 'Juguetes'">
               <h3 class="m-3">Juguetes</h3>
@@ -87,7 +90,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
+            <div class="dark-bg card mb-4 shadow-sm custom-card cursor-active" id="muebles">
               <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
                 alt="Imgagen representativa de la categoría 'Muebles'">
               <h3 class="m-3">Muebles</h3>
@@ -98,7 +101,7 @@
           </div>
         </div>
         <div class="row">
-          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+          <a class=" btn button-multi btn-lg btn-block inverse-text" href="categories.html">Y mucho más!</a>
         </div>
       </div>
     </div>
@@ -114,6 +117,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/darktheme.js"></script>
+
 </body>
 
 </html>

@@ -33,6 +33,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="theme-toggle" href="">Modo oscuro/claro</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
@@ -72,28 +75,28 @@
       </div>
       <div class= "contenedorfiltros">
         <div class="d-flex justify-content-end mb-2  gap-2 flex-wrap"> 
-        <button class="btn btn-secondary" id="sortAsc">
-          <i class="bi bi-sort-up"></i>$
-        </button>
-        <button class="btn btn-secondary" id="sortDesc">
-          <i class="bi bi-sort-down"></i>$
-        </button>
-        <button class="btn btn-dark" id="sortRel">
-          <i class="bi bi-sort-down"></i> Rel.
-        </button>
+          <button class="btn button-multi btn-secondary" id="sortAsc">
+            <i class="bi bi-sort-up"></i>$
+          </button>
+          <button class="btn button-multi btn-secondary" id="sortDesc">
+            <i class="bi bi-sort-down"></i>$
+          </button>
+          <button class="btn button-multi" id="sortRel">
+            <i class="bi bi-sort-down"></i> Rel.
+          </button>
         </div>
         <br>
         <div class="d-flex justify-content-end flex-wrap gap-2">
-        <label for="precioMin">Precio mínimo:</label>
-        <input type="number" id="precioMin" placeholder="0">
-        <label for="precioMax">Precio máximo:</label>
-        <input type="number" id="precioMax" placeholder="0">
-        <button class="btn btn-warning" id="btnFiltrar">Filtrar</button>
-        <button class="btn btn-light" id="btnLimpiar">Limpiar</button>
+          <label for="precioMin">Precio mínimo:</label>
+          <input class="button-multi" type="number" id="precioMin" placeholder="0">
+          <label for="precioMax">Precio máximo:</label>
+          <input class="button-multi"type="number" id="precioMax" placeholder="0">
+          <button class="btn btn-warning" id="btnFiltrar">Filtrar</button>
+          <button class="btn button-multi" id="btnLimpiar">Limpiar</button>
         </div>
       </div>
       <div class="d-flex justify-content-end flex-wrap gap-2 mt-3">
-        <input type="search" id="buscador" class="form-control" placeholder="Buscar productos...">
+        <input type="search" id="buscador" class="button-multi form-control" placeholder="Buscar productos...">
       </div>
       <div class="products-list">
       </div>
@@ -119,6 +122,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/darktheme.js"></script>
+
 </body>
 
 </html>

@@ -31,6 +31,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="theme-toggle" href="">Modo oscuro/claro</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
@@ -74,7 +77,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="productName">Nombre</label>
-              <input type="text" class="form-control" id="productName" value="" name="productName">
+              <input type="text" class="button-multi form-control" id="productName" value="" name="productName">
               <div class="invalid-feedback">
                 Ingresa un nombre
               </div>
@@ -83,7 +86,7 @@
           <div class="row">
             <div class="col-md-8 order-md-1">
               <label>Imágenes</label>
-              <div class="needsclick dz-clickable" id="file-upload">
+              <div class="dz-clickable" id="file-upload">
                 <div class="dz-message needsclick">
                   Arrastra tus fotos aquí<br>
                 </div>
@@ -93,13 +96,13 @@
           <div class="row">
             <div class="col-md-12 mb-3">
               <label for="productDescription">Descripción</label>
-              <textarea name="productDescription" class="form-control" id="productDescription"></textarea>
+              <textarea name="productDescription" class="button-multi form-control" id="productDescription"></textarea>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder="" required="" value="0"
+              <input type="number" name="productCostInput" class="button-multi form-control" id="productCostInput" placeholder="" required="" value="0"
                 min="0">
               <div class="invalid-feedback">
                 El costo debe ser mayor que 0.
@@ -107,7 +110,7 @@
             </div>
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
+              <select name="productCurrency" class="button-multi form-select custom-select d-block w-100" id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
@@ -120,7 +123,7 @@
           <div class="row">
             <div class="col-md-7 mb-3">
               <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
+              <select name="productCategory" class="button-multi custom-select form-select d-block w-100" id="productCategory">
                 <option value="">Elija la categoría...</option>
                 <option>Autos</option>
                 <option>Juguetes</option>
@@ -137,7 +140,7 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control" id="productCountInput"  required value="1"
+              <input type="number" name="productCountInput" class="button-multi form-control" id="productCountInput"  required value="1"
                 min="0">
               <div class="invalid-feedback">
                 La cantidad es requerida.
@@ -252,6 +255,8 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
+  <script src="js/darktheme.js"></script>
+
 </body>
 
 </html>

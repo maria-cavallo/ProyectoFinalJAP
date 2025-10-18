@@ -31,6 +31,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="theme-toggle" href="">Modo oscuro/claro</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
@@ -72,11 +75,11 @@
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <label class="btn button-multi" for="sortAsc">A-Z</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
+            <label class="btn button-multi" for="sortDesc">Z-A</label>
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <label class="btn button-multi" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
         </div>
       </div>
@@ -87,15 +90,15 @@
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-theme form-control" type="number" placeholder="min." id="rangeFilterCountMin">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-theme form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn button-multi btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn button-multi btn-sm" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
@@ -126,6 +129,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
+  <script src="js/darktheme.js"></script>
+
 </body>
 
 </html>
