@@ -61,10 +61,38 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p class="lead mb-2">${product.description}</p>
                         <p class="text-muted mb-3"><small>Vendidos: ${product.soldCount}</small></p>
                         <h4 class="text-default fw-bold mt-2 mb-4">${product.currency} ${product.cost}</h4>
-                        <button class="btn btn-primary px-4 shadow-sm">Comprar</button>
+                        <button class="btn btn-primary px-4 shadow-sm" id=btn>Comprar</button>
                         </div>
                     </div>
                 </div>`;
+            //Tomamos el botón que se generá dinamicamente. 
+            const comprarBoton = document.getElementById ("btn"); 
+           
+            //Creamos el evento que permite agregarle funcionalidad
+            
+            comprarBoton.addEventListener ("click", () => {
+                const agregoProducto = { //Guardamos los datos del producto
+                    id: product.id,
+                    name: product.name,
+                    cost: product.cost,
+                    currency: product.currency,
+                    count: 1 
+                }; 
+                
+                let carrito = JSON.parse(localStorage.getItem("cart")) || []; //Defino el espacio para los productos
+                
+                const index = carrito.findIndex (item => item.id === agregoProducto.id);
+                if (index !== -1) {
+                    carrito[index].count += 1;
+                } else {
+                    carrito.push(agregoProducto);
+                }
+                localStorage.setItem("cart", JSON.stringify(carrito)); //Guardar la información a nivel local 
+                alert("Producto agregado al carrito");
+
+                 // Redirigir a la página del carrito
+                 window.location.href = "cart.html";
+            });
 
             // === PRODUCTOS RELACIONADOS ===
             const relatedContainer = document.getElementById("productos-relacionados");
