@@ -28,6 +28,22 @@ document.addEventListener("DOMContentLoaded",()=>{
       if (savedPic && userImg) {
         userImg.src = savedPic;
     }
+    
+    // Actualizar contador del carrito en el navbar (suma de cantidades)
+    function updateCartCount(){
+      try{
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((s,p)=> s + (Number(p.count) || 0), 0);
+        document.querySelectorAll('#cart-count').forEach(el=>{
+          el.textContent = count;
+          el.style.display = count > 0 ? 'inline-block' : 'none';
+        });
+      }catch(e){
+        console.error('Error leyendo carrito:', e);
+      }
+    }
+    updateCartCount();
+    window.addEventListener('storage', updateCartCount);
 });
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
