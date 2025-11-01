@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="icon" type="image/png" href="img/logo-jap.svg">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar-nav navbar navbar-expand-lg navbar-dark bg-dark p-2">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="user-image" class="rounded-circle" src="img/img_perfil.png" alt="user-image" width="25" height="25">
+                <p id="name-user" class="nav-link mb-0 ps-2"></p>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <button class="dropdown-item d-flex align-items-center gap-2" type="button">
+                    <a href="my-profile.html " class="text-decoration-none text-white d-flex align-items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                      </svg> Mi perfil
+                    </a>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item d-flex align-items-center gap-2" type="button">
+                    <a href="cart.html" class="text-decoration-none text-white d-flex align-items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                      </svg> Mis compras
+                    </a>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="cart.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg>
+              <span id="cart-count" class="badge bg-danger ms-2">0</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn nav-link border-0 bg-transparent" id="theme-toggle">
+              <span id="theme-icon"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="container my-4 navbar-nav w-100 justify-content-between">
+      <div id="product-info" class="dark-bg card shadow-sm p-4"></div>
+    </div>
+    <div class="container my-4">
+      <div id="ratings-summary" class="dark-bg card shadow-sm p-4 mb-4">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+            <div class="display-3 fw-bold text-warning" id="average-rating">4.7</div>
+            <div>
+              <span id="total-reviews" class="fw-bold"></span> opiniones
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="my-1">
+              <span class="me-2">5 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-5"></div>
+              </div>
+              <span id="count-5" class="ms-1"></span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">4 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-4"></div>
+              </div>
+              <span id="count-4" class="ms-1"></span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">3 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-3"></div>
+              </div>
+              <span id="count-3" class="ms-1"></span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">2 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-2"></div>
+              </div>
+              <span id="count-2" class="ms-1"></span>
+            </div>
+            <div class="my-1">
+              <span class="me-2">1 ★</span>
+              <div class="progress d-inline-block align-middle" style="width:70%">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" id="bar-1"></div>
+              </div>
+              <span id="count-1" class="ms-1"></span>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 text-center">
+            <div class="d-flex flex-column">
+              <h6 class="px-3">
+                ¡Dejá tu opinión en la sección de abajo!
+              </h6>
+              <h6>🠟</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4>Opiniones</h4>
+      <div id="comentarios"></div>
+      <div class="opinion-container ">
+        <label for="comentario-texto" class="form-label mt-4">Enviar una opinión</label>
+        <form id="comentario-form">
+          <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+          </div>
+          <div class="opinion-input">
+            <input class="button-multi" type="text" id="comentario" placeholder="Ingrese su opinión sobre el producto" required>
+            <button type="submit" class="btn btn-primary px-3 shadow-sm m-8">➤</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container my-4 font-weight-bold">
+        <h4>Productos relacionados</h4>
+        <div id="productos-relacionados" class="row g-4"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
+
+</html>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+  <script src="js/darktheme.js"></script>
+
+</body>
+
+</html>
