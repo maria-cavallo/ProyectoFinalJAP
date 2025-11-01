@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("product-info");
     const productID = localStorage.getItem("productID");
+    const commentsContainer = document.getElementById("comentarios");
+    const form = document.getElementById("comentario-form");
 
     if (!productID) {
         container.innerHTML = `
@@ -12,6 +14,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
     const PRODUCTS_COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
+    // === COMENTARIOS ===
+
+
+    function agregarComentario(user, description, score, dateTime) {
+        const div = document.createElement("div");
+        div.classList.add("card", "my-2", "shadow-sm");
+        div.innerHTML = `
+                <div class="dark-bg card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h6 class="fw-bold mb-1">${user}</h6>
+                    <p class="mb-1 text-warning fs-4">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>
+                    </div>    
+                    <p class="mb-2">${description}</p>
+                    <small class="text-muted fs-8">${dateTime}</small>
+                </div>`;
+        commentsContainer.appendChild(div);
+    }
+
+    // === COMENTARIOS DE LA API ===
+    fetch(PRODUCTS_COMMENTS_URL)
+        .then(res => res.json())
+        .then(comentarios => {
+            commentsContainer.innerHTML = "";
+            comentarios.forEach(c => agregarComentario(c.user, c.description, c.score, c.dateTime));
+            actualizarResumenCalificaciones(comentarios);
+        })
+        .catch(err => {
+            console.error("Error al cargar comentarios:", err);
+            commentsContainer.innerHTML = `<div class="alert alert-secondary text-center my-4">No hay comentarios disponibles.</div>`;
+        });
 
     // === INFO PRODUCTO ===
     fetch(PRODUCT_INFO_URL)
@@ -37,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="visually-hidden">Siguiente</span>
                     </button>` : ""}
                 </div>`
-                : 
+                :
                 `<div class="alert alert-secondary text-center my-4">No hay imágenes disponibles.</div>`;
 
             container.innerHTML = `
@@ -66,22 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>`;
             //Tomamos el botón que se generá dinamicamente. 
-            const comprarBoton = document.getElementById ("btn"); 
-           
+            const comprarBoton = document.getElementById("btn");
+
             //Creamos el evento que permite agregarle funcionalidad
-            
-            comprarBoton.addEventListener ("click", () => {
+
+            comprarBoton.addEventListener("click", () => {
                 const agregoProducto = { //Guardamos los datos del producto
                     id: product.id,
                     name: product.name,
                     cost: product.cost,
                     currency: product.currency,
-                    count: 1 
-                }; 
-                
+                    image:product.image,
+                    count: 1
+                };
+
                 let carrito = JSON.parse(localStorage.getItem("cart")) || []; //Defino el espacio para los productos
-                
-                const index = carrito.findIndex (item => item.id === agregoProducto.id);
+
+                const index = carrito.findIndex(item => item.id === agregoProducto.id);
                 if (index !== -1) {
                     carrito[index].count += 1;
                 } else {
@@ -90,8 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem("cart", JSON.stringify(carrito)); //Guardar la información a nivel local 
                 alert("Producto agregado al carrito");
 
-                 // Redirigir a la página del carrito
-                 window.location.href = "cart.html";
+                // Redirigir a la página del carrito
+                window.location.href = "cart.html";
             });
 
             // === PRODUCTOS RELACIONADOS ===
@@ -113,37 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
 
-            // === COMENTARIOS ===
-            const commentsContainer = document.getElementById("comentarios");
-            const form = document.getElementById("comentario-form");
 
-            function agregarComentario(user, description, score, dateTime) {
-                const div = document.createElement("div");
-                div.classList.add("card", "my-2", "shadow-sm");
-                div.innerHTML = `
-                <div class="dark-bg card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                    <h6 class="fw-bold mb-1">${user}</h6>
-                    <p class="mb-1 text-warning fs-4">${"★".repeat(score)}${"☆".repeat(5 - score)}</p>
-                    </div>    
-                    <p class="mb-2">${description}</p>
-                    <small class="text-muted fs-8">${dateTime}</small>
-                </div>`;
-                commentsContainer.appendChild(div);
-            }
-
-            // === COMENTARIOS DE LA API ===
-            fetch(PRODUCTS_COMMENTS_URL)
-                .then(res => res.json())
-                .then(comentarios => {
-                    commentsContainer.innerHTML = "";
-                    comentarios.forEach(c => agregarComentario(c.user, c.description, c.score, c.dateTime));
-                    actualizarResumenCalificaciones(comentarios);
-                })
-                .catch(err => {
-                    console.error("Error al cargar comentarios:", err);
-                    commentsContainer.innerHTML = `<div class="alert alert-secondary text-center my-4">No hay comentarios disponibles.</div>`;
-                });
 
             // === AGREGAR COMENTARIO ===
             form.addEventListener("submit", e => {
