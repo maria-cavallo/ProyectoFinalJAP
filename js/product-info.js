@@ -61,10 +61,36 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p class="lead mb-2">${product.description}</p>
                         <p class="text-muted mb-3"><small>Vendidos: ${product.soldCount}</small></p>
                         <h4 class="text-default fw-bold mt-2 mb-4">${product.currency} ${product.cost}</h4>
-                        <button class="btn btn-primary px-4 shadow-sm">Comprar</button>
+                        <button id="btn-comprar" class="btn btn-primary px-4 shadow-sm">Comprar</button>
                         </div>
                     </div>
                 </div>`;
+
+            // === FUNCIÓN PARA AÑADIR AL CARRITO ===
+            const botonCompra = document.getElementById("btn-comprar");
+            botonCompra.addEventListener("click", () => {
+                let carrito = JSON.parse(localStorage.getItem("cart")) || [];
+
+                const productoCarrito = {
+                    id: product.id,
+                    name: product.name,
+                    cost: product.cost,
+                    currency: product.currency,
+                    image: product.images?.[0] || "",
+                    count: 1
+                };
+
+                // Si el producto ya existe, aumentar cantidad
+                const existente = carrito.find(p => p.id === productoCarrito.id);
+                if (existente) {
+                    existente.count += 1;
+                } else {
+                    carrito.push(productoCarrito);
+                }
+
+                localStorage.setItem("cart", JSON.stringify(carrito));
+                alert(`"${product.name}" se añadió al carrito.`);
+            });
 
             // === PRODUCTOS RELACIONADOS ===
             const relatedContainer = document.getElementById("productos-relacionados");
