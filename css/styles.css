@@ -457,7 +457,7 @@ a.custom-card:hover {
 
 :root {
   --bg-color: #f0eeee;
-  --bg-color-gray: #d4d4d4 ;
+  --bg-color-gray: #ececec ;
   --bg-color-gray-hover: #ffffff ;
 
   --text-color: #000000;
@@ -497,10 +497,11 @@ main,body {
 }
 
 .inverse-text{
-  h1,h2,h3,h4,h5,p{
+  h1,h2,h3,h4,h5,h6,p,strong{
     color: var(--text-color);
   }
 }
+
 .category{
   background-color: var(--bg-color-gray);
 }

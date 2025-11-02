@@ -73,7 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
             comprarBoton.addEventListener ("click", () => {
                 const agregoProducto = { //Guardamos los datos del producto
                     id: product.id,
+                    image: product.images[0],
                     name: product.name,
+                    description: product.description,
                     cost: product.cost,
                     currency: product.currency,
                     count: 1 
@@ -91,7 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Producto agregado al carrito");
 
                  // Redirigir a la página del carrito
-                 window.location.href = "cart.html";
+                window.setTimeout(() => {
+                    window.location = "cart.html";
+                }, 1000);
             });
 
             // === PRODUCTOS RELACIONADOS ===
