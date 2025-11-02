@@ -513,6 +513,10 @@ main,body {
   background-color: var(--bg-color-gray);
 }
 
+.form-theme input, .form-theme select, .form-theme textarea{
+  border: 1px solid #ccc;
+}
+
 #file-upload {
   min-height: 150px;
   border: 2px dashed silver;

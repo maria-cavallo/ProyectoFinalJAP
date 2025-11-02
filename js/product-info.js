@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("product-info");
     const productID = localStorage.getItem("productID");
+    
 
     if (!productID) {
         container.innerHTML = `
@@ -90,7 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     carrito.push(agregoProducto);
                 }
                 localStorage.setItem("cart", JSON.stringify(carrito)); //Guardar la información a nivel local 
-                alert("Producto agregado al carrito");
+                showAlert("Producto agregado al carrito", "success");
+                //TODO alert("Producto agregado al carrito");
 
                  // Redirigir a la página del carrito
                 window.setTimeout(() => {
@@ -205,3 +207,13 @@ function actualizarResumenCalificaciones(comentarios) {
         countLabel.textContent = counts[stars - 1];
     }
 }
+
+function showAlert(message, type) {
+    const alertContainer = document.getElementById("alert-container");
+        alertContainer.innerHTML = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    }
