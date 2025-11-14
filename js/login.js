@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password");
 
 /* 
-Este evento se usa para manejar el envió del forumario. 
+Este evento se usa para manejar el envió del formulario. 
 */
     loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -75,7 +75,7 @@ Se verifica la existencia del usuario atendiendo al archivo json que funciona co
                         showAlert("Usuario o contraseña incorrectos.", "danger");
                     }
                 })
-                //Si el error es al cargar los datos del json. 
+                //Si el error es al cargar los datos del json coloca esta alerta. 
                 .catch((error) => {
                     console.log("Error al verificar usuario:", error);
                     showAlert("No se pudo verificar el usuario. Intente más tarde.", "danger");
@@ -87,7 +87,8 @@ Se verifica la existencia del usuario atendiendo al archivo json que funciona co
 
 /*
 Esta función atiende a la regulación de la validación de un campo aplicando clases de boostrap.
-Muestra un error en rojo al lado del campo.  
+Marca el input como invalido mostrando en rojo ese elemento. 
+Si el campo estaba marcado como válido, elimina la clase "is-valid".
 */
         function setError(input, message) {
         input.classList.add("is-invalid");
