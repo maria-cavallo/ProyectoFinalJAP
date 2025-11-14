@@ -82,52 +82,185 @@
         </div>
       </div>
 
-      <div class="dark-bg inverse-text" id="divCarga"></div>
+    <div class="row">
+      <div class="col-lg-8 col-md-7 col-12">
+        <div class="dark-bg inverse-text" id="divCarga"></div>
+      </div>
 
-      <div class="d-flex justify-content-center align-items-center m-5">
-        <div class="col-lg-4">
-          <div class="card mb-3">
+      <div class="col-lg-4 col-md-5 col-12" id="resumen-pedido">
+        <div class="">
+          <div class="card mb-4 p-2 dark-bg">
             <div class="card-body dark-bg">
               <h5 class="card-title">Resumen del pedido</h5>
-              <div class="d-flex justify-content-between">
-                <span>Subtotal</span>
-                <strong id="cart-subtotal"></strong>
-              </div>
-              <div class="d-flex justify-content-between mt-2">
-                <span>Envío</span>
-                <strong id="cart-shipping"></strong>
-              </div>
-              <hr>
-              <div class="d-flex justify-content-between">
-                <span>Total</span>
-                <strong id="cart-total"></strong>
-              </div>
-              <div class="mt-3 d-grid gap-2">
-                <button id="checkout-btn" class="btn btn-primary">Comprar ahora</button>
-                <button id="clear-cart-btn" class="btn btn-outline-secondary">Vaciar carrito</button>
+              <div class="d-grid gap-2">
+                <div class="d-flex justify-content-between">
+                  <span>Subtotal</span>
+                  <strong id="cart-subtotal"></strong>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                  <span>Envío</span>
+                  <strong id="cart-shipping"></strong>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                  <span>Total</span>
+                  <strong id="cart-total"></strong>
+                </div>
+                <div class="mt-3 d-grid gap-2">
+                  <button id="checkout-btn" class="btn btn-primary">Comprar ahora</button>
+                  <button id="clear-cart-btn" class="btn btn-outline-secondary">Vaciar carrito</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center p-4">
-        <div class="modal-body">
-          <div class="mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-            </svg>
+    
+        <div class="g-4">
+          <ul class="nav nav-tabs mb-4 justify-content-between" id="checkoutSteps">
+            <li class="nav-item">
+              <button class="nav-link active" id="step1-tab" data-bs-toggle="pill" data-bs-target="#step1">
+                1. Envío
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="step2-tab" data-bs-toggle="pill" data-bs-target="#step2">
+                2. Dirección
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="step3-tab" data-bs-toggle="pill" data-bs-target="#step3">
+                3. Pago
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <!-- Paso 1: Envío -->
+            <div class="tab-pane fade show active" id="step1">
+              <div class="card mb-3">
+                <div class="card-body dark-bg inverse-text">
+                  <h5 class="d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                      <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                    </svg>
+                    Seleccione el método de envío
+                  </h5>
+                  <div class="form-check mt-3 border">
+                    <div class="m-2">
+                      <input class="form-check-input" type="radio" name="shipping" id="premium">
+                      <label class="form-check-label" for="premium">
+                        Premium <strong>(15%)</strong><br>
+                        <small>Entrega de 2 a 5 días</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-check mt-3 border">
+                    <div class="m-2">
+                      <input class="form-check-input" type="radio" name="shipping" id="express">
+                      <label class="form-check-label" for="express">
+                        Express <strong>(7%)</strong><br>
+                        <small>Entrega de 5 a 8 días</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-check mt-3 border">
+                    <div class="m-2">
+                      <input class="form-check-input" type="radio" name="shipping" id="standard">
+                      <label class="form-check-label" for="standard">
+                        Standard <strong>(5%)</strong><br>
+                        <small>Entrega de 12 a 15 días</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="text-end mt-4">
+                    <button class="btn btn-primary" id="toStep2">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 2: Dirección -->
+            <div class="tab-pane fade" id="step2">
+              <div class="card mb-3">
+                <div class="card-body dark-bg inverse-text">
+                  <h5 class="d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                    </svg>
+                    Dirección de envío
+                  </h5>
+                  <form class="mt-3">
+                    <input type="text" class="form-control mb-3" placeholder="Departamento" id="departamento" required>
+                    <input type="text" class="form-control mb-3" placeholder="Ciudad" id="ciudad" required>
+                    <input type="text" class="form-control mb-3" placeholder="Calle" id="calle" required>
+                    <input type="text" class="form-control mb-3" placeholder="Número de puerta" id="numero" required>
+                    <input type="text" class="form-control mb-3" placeholder="Esquina" id="esquina" required>
+                  </form>
+                  <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" id="backTo1">Atrás</button>
+                    <button class="btn btn-primary" id="toStep3">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 3: Pago -->
+            <div class="tab-pane fade" id="step3">
+              <div class="card mb-3">
+                <div class="card-body dark-bg inverse-text">
+                  <h5 class="d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                      <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                    </svg>
+                    Método de pago
+                  </h5>
+                  <div class="form-check mt-3 border">
+                    <div class="m-2">
+                      <input class="form-check-input" type="radio" name="payment" id="credit">
+                      <label class="form-check-label" for="credit">Tarjeta de crédito</label><br>
+                      <small class="text-muted">Visa, Mastercard, American Express</small>
+                    </div>
+                  </div>
+                  <div class="form-check mt-3 border">
+                    <div class="m-2">
+                      <input class="form-check-input" type="radio" name="payment" id="transfer">
+                      <label class="form-check-label" for="transfer">Transferencia bancaria</label><br>
+                      <small class="text-muted">Transferencia directa a cuenta bancaria</small>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" id="backTo2">Atrás</button>
+                    <button class="btn btn-primary" id="save-data-btn">Enviar datos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h5 class="modal-title mb-2" id="purchaseModalLabel">¡Compra realizada con éxito!</h5>
-          <p class="text-muted">¡Gracias por tu compra!<br>Te enviaremos un correo con los detalles del pedido.</p>
-          <button type="button" class="btn btn-primary mt-3" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <div class="modal-body">
+            <div class="mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+              </svg>
+            </div>
+            <h5 class="modal-title mb-2" id="purchaseModalLabel">¡Compra realizada con éxito!</h5>
+            <p class="text-muted">¡Gracias por tu compra!<br>Te enviaremos un correo con los detalles del pedido.</p>
+            <button type="button" class="btn btn-primary mt-3" data-bs-dismiss="modal">Aceptar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </main>
 
   <footer class="text-muted">
