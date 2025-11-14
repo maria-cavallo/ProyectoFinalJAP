@@ -31,7 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("shippingRate", porcentaje);
             actualizarTotales();
         });
+    if (!carritoTieneProductos()) {
+        radiosEnvio.forEach(radio => radio.disabled = true);
+    } else {
+    radiosEnvio.forEach(radio => radio.disabled = false);
+    }
     });
+
+   
 
     const step1Tab = document.getElementById("step1-tab");
     const step2Tab = document.getElementById("step2-tab");
@@ -49,6 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (toStep2Btn) {
         toStep2Btn.addEventListener("click", () => {
+
+            if (!carritoTieneProductos()) {
+            alert("Tu carrito está vacío. Agrega productos antes de continuar.");
+            return;
+        }
             const shippingSelected = document.querySelector('input[name="shipping"]:checked');
             if (!shippingSelected) {
                 alert("Por favor, seleccioná un método de envío para continuar.");
@@ -63,7 +75,33 @@ document.addEventListener("DOMContentLoaded", () => {
         backTo1Btn.addEventListener("click", () => goToStep(step1Tab));
     }
 
-    // ★ VALIDACIÓN DE DIRECCIÓN CON BOOTSTRAP ★
+    const addressInputs = Array.from(document.querySelectorAll('#step2 input[required]'));
+
+    addressInputs.forEach(input => {
+    input.classList.remove("is-valid", "is-invalid");
+});
+
+    addressInputs.forEach(input => {
+    input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
+            input.classList.remove("is-valid");
+            input.classList.add("is-invalid");
+        } else {
+            input.classList.remove("is-invalid");
+            input.classList.add("is-valid");
+        }
+    });
+});
+
+    addressInputs.forEach(input => {
+    input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+            input.classList.remove("is-invalid");
+            input.classList.add("is-valid");
+        }
+    });
+});
+
     if (toStep3Btn) {
         toStep3Btn.addEventListener("click", () => {
             const addressInputs = document.querySelectorAll('#step2 input[required]');
@@ -159,6 +197,7 @@ function eliminarDelCarrito(id) {
     const nuevoCarrito = carrito.filter(producto => producto.id !== id);
     localStorage.setItem("cart", JSON.stringify(nuevoCarrito));
     mostrarCarrito();
+    actualizarContadorCarrito(); 
 }
 
 function actualizarCantidad(id, nuevaCantidad) {
@@ -191,6 +230,7 @@ function vaciarCarrito() {
     document.getElementById("cart-subtotal").innerText = "-";
     document.getElementById("cart-shipping").innerText = "-";
     document.getElementById("cart-total").innerText = "-";
+    actualizarContadorCarrito(); 
 }
 
 function finalizarCompra() {
@@ -207,9 +247,13 @@ function finalizarCompra() {
     localStorage.removeItem("cart");
     mostrarCarrito();
     actualizarTotales();
+    actualizarContadorCarrito(); 
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 2000);
 }
 
-// ★ VALIDACIÓN DE DIRECCIÓN CON BOOTSTRAP ★
 function guardarDatosCompletos() {
     const shippingSelected = document.querySelector("input[name='shipping']:checked");
     const paymentSelected = document.querySelector("input[name='payment']:checked");
@@ -261,3 +305,22 @@ document.getElementById("save-data-btn").addEventListener("click", guardarDatosC
 
 const checkoutBtn = document.getElementById("checkout-btn");
 checkoutBtn.disabled = true;
+
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = carrito.reduce((sum, item) => sum + Number(item.count), 0);
+
+    const badge = document.getElementById("cart-count");
+
+    if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? "inline-block" : "none";
+    }
+}
+
+function carritoTieneProductos() {
+    const carrito = JSON.parse(localStorage.getItem("cart")) || [];
+    return carrito.length > 0;
+}
+
+actualizarContadorCarrito(); 
