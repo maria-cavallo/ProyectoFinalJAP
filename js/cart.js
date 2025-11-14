@@ -2,23 +2,26 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarCarrito();
     actualizarTotales();
 
-    document.getElementById("checkout-btn").disabled = true; 
-
     const vaciarBtn = document.getElementById("clear-cart-btn");
     if (vaciarBtn) {
         vaciarBtn.addEventListener("click", vaciarCarrito);
     }
-
+    
+/* Obtiene el botón de finalizar compra, lo desactiva inicialmente
+y le asigna la función finalizarCompra() para cuando luego sea habilitado al validar el resto.*/
     const checkoutBtn = document.getElementById("checkout-btn");
     if (checkoutBtn) {
         checkoutBtn.disabled = true;
         checkoutBtn.addEventListener("click", finalizarCompra);
     }
-    
+
+/* Obtiene el botón de guardar datos por su id, luego se asigna el evento que
+ejecuta guardarDatosCompletos() cuando el usuario hace clic.*/
     const saveDataBtn = document.getElementById("save-data-btn");
     if (saveDataBtn) {
         saveDataBtn.addEventListener("click", guardarDatosCompletos);
     }
+
 
     const radiosEnvio = document.querySelectorAll('input[name="shipping"]');
     radiosEnvio.forEach(radio => {
@@ -54,14 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
         tab.show();
     }
 
+/*Validación de los pasos 1 y 2*/
+
     if (toStep2Btn) {
         toStep2Btn.addEventListener("click", () => {
 
-            if (!carritoTieneProductos()) {
+            if (!carritoTieneProductos()) { //Comprobamos si hay algo en el carrito llamando a la función. 
             alert("Tu carrito está vacío. Agrega productos antes de continuar.");
             return;
         }
-            const shippingSelected = document.querySelector('input[name="shipping"]:checked');
+            const shippingSelected = document.querySelector('input[name="shipping"]:checked'); //Validar que se haya seleciconado. 
             if (!shippingSelected) {
                 alert("Por favor, seleccioná un método de envío para continuar.");
                 return;
@@ -71,17 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (backTo1Btn) {
+    if (backTo1Btn) { //Funcionalidad del botón para pasar a la sección de la dirección. 
         backTo1Btn.addEventListener("click", () => goToStep(step1Tab));
     }
 
     const addressInputs = Array.from(document.querySelectorAll('#step2 input[required]'));
 
     addressInputs.forEach(input => {
-    input.classList.remove("is-valid", "is-invalid");
+    input.classList.remove("is-valid", "is-invalid"); //Se quitan clases de validación al formulario de dirección atendiendo a que empiece limpio. 
 });
 
-    addressInputs.forEach(input => {
+/*Estas dos partes del código permiten manipular las validaciones del formulario marcando en rojo o verde atendiendo al
+comportamiento del usuario
+// El primero verifica el estado del campo cuando el usuario sale del input (blur),
+// marcándolo como válido o inválido según si está vacío o no.
+// El segundo actualiza la validación mientras el usuario escribe (input),
+// corrigiendo el estado a válido apenas se ingresa algún contenido.*/
+   
+addressInputs.forEach(input => {
     input.addEventListener("blur", () => {
         if (input.value.trim() === "") {
             input.classList.remove("is-valid");
@@ -102,6 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+/* Este bloque valida todos los campos obligatorios del paso 2 (dirección) cuando el usuario
+   intenta avanzar al paso 3. Si algún dato está incompleto, marca los inputs como
+   inválidos, muestra un mensaje de alerta y evita avanzar. Solo pasa al paso 3 si
+   todos los campos requeridos están completos.*/
     if (toStep3Btn) {
         toStep3Btn.addEventListener("click", () => {
             const addressInputs = document.querySelectorAll('#step2 input[required]');
@@ -197,7 +214,7 @@ function eliminarDelCarrito(id) {
     const nuevoCarrito = carrito.filter(producto => producto.id !== id);
     localStorage.setItem("cart", JSON.stringify(nuevoCarrito));
     mostrarCarrito();
-    actualizarContadorCarrito(); 
+    actualizarContadorCarrito(); //Cambiar el número que indica la cantidad de elementos en el carrito. 
 }
 
 function actualizarCantidad(id, nuevaCantidad) {
@@ -207,6 +224,7 @@ function actualizarCantidad(id, nuevaCantidad) {
         producto.count = nuevaCantidad;
         localStorage.setItem("cart", JSON.stringify(carrito));
         mostrarCarrito();
+        actualizarContadorCarrito();
     }
 }
 
@@ -249,11 +267,16 @@ function finalizarCompra() {
     actualizarTotales();
     actualizarContadorCarrito(); 
 
-    setTimeout(() => {
+    setTimeout(() => {  //Permite esperar un tiempo para que luego, del cartel de compra exitosa se pueda redirigir al index. 
         window.location.href = "index.html";
     }, 2000);
 }
 
+/*
+ Esta función se encarga de validar que se hayan completado los pasos 1 (tipo de envio), 
+ paso 2 (dirección) y paso 3 (método de pago). 
+ Si esta completado habilita el botón de finalizar compra para que se pueda hacer el clic.
+ */
 function guardarDatosCompletos() {
     const shippingSelected = document.querySelector("input[name='shipping']:checked");
     const paymentSelected = document.querySelector("input[name='payment']:checked");
@@ -301,11 +324,10 @@ function guardarDatosCompletos() {
     checkoutBtn.disabled = false;
 }
 
-document.getElementById("save-data-btn").addEventListener("click", guardarDatosCompletos);
-
-const checkoutBtn = document.getElementById("checkout-btn");
-checkoutBtn.disabled = true;
-
+/*Recupera el carrtio de localstorage, crea uno si no existe y luego, verfica
+la cantidad de proeductos.
+Actualiza el badge del carrito.
+Oculta el badge si el carrito está vacío.*/
 function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("cart")) || [];
     const count = carrito.reduce((sum, item) => sum + Number(item.count), 0);
@@ -318,9 +340,10 @@ function actualizarContadorCarrito() {
     }
 }
 
+/*Esta función se encarga de verificar si el carrito esta vació y se emplea 
+para deshabilitar el poder completar los campos si no hay ningún producto*/
 function carritoTieneProductos() {
     const carrito = JSON.parse(localStorage.getItem("cart")) || [];
     return carrito.length > 0;
 }
 
-actualizarContadorCarrito(); 
