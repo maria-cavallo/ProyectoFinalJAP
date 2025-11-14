@@ -7,7 +7,7 @@ Redirecciona al index principal.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-    //Verifica si hay una cookies activa, en caso que sí redirige al index. 
+    //Verifica si hay una cookies activa, en caso que sí redirige al index (página principal). 
     if (document.cookie.split(';').some(cookie => cookie.trim().startsWith('user='))) {
         if (!window.location.pathname.endsWith("index.html")) {
             window.location.href = "index.html";
