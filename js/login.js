@@ -111,7 +111,7 @@ Si el campo estaba marcado como válido, elimina la clase "is-valid".
         }
     }
 
-/*Muestra un mensaje en le formulario.
+/*Muestra un mensaje en el formulario.
 */
     function showAlert(message, type) {
         alertContainer.innerHTML = `
