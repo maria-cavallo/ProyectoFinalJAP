@@ -169,7 +169,12 @@ function mostrarCarrito() {
             <div class="list-group list-group-flush">
                 ${carrito
                     .map(
-                        producto => `
+                        producto => {
+                            // Calcular precio en USD (si es UYU lo convertimos; si ya es USD lo usamos tal cual)
+                            const precioUnitarioUSD = convertirAMonedaUnica(Number(producto.cost), producto.currency);
+                            const totalProductoUSD = precioUnitarioUSD * Number(producto.count);
+
+                            return `
                 <div class="list-group-item dark-bg">
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
@@ -182,7 +187,7 @@ function mostrarCarrito() {
                         <div>
                             <h4 class="mb-1">${producto.name}</h4>
                             <p class="mb-1 text-muted">${producto.description}</p>
-                            <strong class="text-muted">${producto.currency} ${producto.cost.toLocaleString()}</strong>
+                            <strong class="text-muted">USD ${totalProductoUSD.toLocaleString()}</strong>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -198,7 +203,8 @@ function mostrarCarrito() {
                     </div>
                     </div>
                 </div>
-                `
+                `;
+                        }
                     )
                     .join("")}
             </div>
@@ -221,17 +227,26 @@ function actualizarCantidad(id, nuevaCantidad) {
     const carrito = JSON.parse(localStorage.getItem("cart")) || [];
     const producto = carrito.find(p => p.id === id);
     if (producto) {
-        producto.count = nuevaCantidad;
+        producto.count = Number(nuevaCantidad);
         localStorage.setItem("cart", JSON.stringify(carrito));
         mostrarCarrito();
         actualizarContadorCarrito();
     }
 }
 
+/* Esta función calcula la conversión simple UYU -> USD (40 UYU = 1 USD)
+   Si la moneda no es UYU, devuelve el mismo valor (se asume USD). */
+function convertirAMonedaUnica(cost, currency) {
+    if (currency === "UYU") {
+        return Number(cost) / 40;
+    }
+    return Number(cost);
+}
+
 function actualizarTotales() {
     const carrito = JSON.parse(localStorage.getItem("cart")) || [];
-    const subtotal = carrito.reduce((sum, p) => sum + p.cost * p.count, 0);
-    const moneda = carrito.length > 0 ? carrito[0].currency : "$";
+    const subtotal = carrito.reduce((sum, p) => sum + convertirAMonedaUnica(Number(p.cost), p.currency) * Number(p.count), 0);
+    const moneda = "USD"; // Mostramos todo en USD porque convertimos UYU a USD
     const porcentaje = parseFloat(localStorage.getItem("shippingRate")) || 0;
 
     const envio = subtotal * porcentaje;
