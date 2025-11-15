@@ -63,12 +63,12 @@ ejecuta guardarDatosCompletos() cuando el usuario hace clic.*/
         toStep2Btn.addEventListener("click", () => {
 
             if (!carritoTieneProductos()) { //Comprobamos si hay algo en el carrito llamando a la función. 
-            alert("Tu carrito está vacío. Agrega productos antes de continuar.");
+            showAlert("Tu carrito está vacío. Agrega productos antes de continuar.", "info");
             return;
         }
             const shippingSelected = document.querySelector('input[name="shipping"]:checked'); //Validar que se haya seleciconado. 
             if (!shippingSelected) {
-                alert("Por favor, seleccioná un método de envío para continuar.");
+                showAlert("Por favor, seleccioná un método de envío para continuar.", "danger");
                 return;
             }
             actualizarTotales();
@@ -136,7 +136,7 @@ addressInputs.forEach(input => {
             });
 
             if (!valid) {
-                alert("Por favor, completá todos los campos de dirección para continuar.");
+                showAlert("Por favor, completá todos los campos de dirección para continuar.", "danger");
                 return;
             }
 
@@ -303,21 +303,21 @@ function guardarDatosCompletos() {
     });
 
     if (!shippingSelected) {
-        alert("Debe seleccionar un método de envío.");
+        showAlert("Debe seleccionar un método de envío.", "danger");
         return;
     }
 
     if (!validAddress) {
-        alert("Debe completar todos los campos de dirección.");
+        showAlert("Debe completar todos los campos de dirección.", "danger");
         return;
     }
 
     if (!paymentSelected) {
-        alert("Debe seleccionar un método de pago.");
+        showAlert("Debe seleccionar un método de pago.", "danger");
         return;
     }
 
-    alert("Datos guardados correctamente.");
+    showAlert("Datos guardados correctamente.", "info");
     localStorage.setItem("datosCompletos", "true");
 
     const checkoutBtn = document.getElementById("checkout-btn");
@@ -347,3 +347,13 @@ function carritoTieneProductos() {
     return carrito.length > 0;
 }
 
+/* Esta función se encarga de mostrar una alerta en la parte superior del contenedor de alertas */
+const alertContainer = document.getElementById("alert-container");
+function showAlert(message, type) {
+        alertContainer.innerHTML = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    }
