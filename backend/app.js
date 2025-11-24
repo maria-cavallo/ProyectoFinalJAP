@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
@@ -16,7 +15,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rutas API
 app.use('/api', apiRoutes);
 app.use('/auth',authRoutes)
 
