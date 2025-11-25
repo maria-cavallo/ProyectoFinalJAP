@@ -1,4 +1,7 @@
 const db=require('../models/db');
+const jwt = require('jsonwebtoken');
+
+const SECRET_KEY = "Clave secreta";
 
 exports.login=async(req,res)=>{
     const {email, password}=req.body;
@@ -15,10 +18,19 @@ exports.login=async(req,res)=>{
         }
         const user = rows[0];
 
+    // Crear token JWT
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      SECRET_KEY
+    );
+
+    return res.json({token});
+
         return res.json({
             success: true,
             user
         });
+
     }catch(err){
         console.error("Login error:", err);
         return res.status(500).json({ error: "Internal server error" });
