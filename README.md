@@ -4,14 +4,14 @@ Instalar dependencias
 Dentro de la carpeta del backend, corré:
 
 ```bash
-npm install
+npm install express mariadb
 ```
 Iniciar el servidor
 
 Una vez instaladas las dependencias:
 
 ``` bash
-npm start
+npm run start
 ```
 
 Listo, el servidor va a quedar corriendo en:
