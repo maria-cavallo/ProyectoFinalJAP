@@ -1,31 +1,19 @@
-Como levantar el servidor local
-
+Cómo levantar el servidor
 Instalar dependencias
-Abri una terminal dentro de la carpeta del proyecto y ejecuta:
+
+Dentro de la carpeta del backend, corré:
 
 ```bash
 npm install
 ```
-
 Iniciar el servidor
-Una vez instaladas las dependencias, arranca el servidor con:
 
-```bash
-node index.js
+Una vez instaladas las dependencias:
+
+``` bash
+npm start
 ```
 
-Si tu archivo principal tiene otro nombre, reemplazalo por ese, por ejemplo:
-
-```bash
-node server.js
-```
-
-Servidor corriendo
-Cuando inicie, podrás acceder a:
+Listo, el servidor va a quedar corriendo en:
 
 http://localhost:3000
-
-Usar con tu frontend
-En el frontend, asegurate de que las rutas usen tu servidor local, por ejemplo:
-
-http://localhost:3000/api/...
